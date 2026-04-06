@@ -11,7 +11,7 @@ const Home: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Kino's Hideout</IonTitle>
+          <IonTitle>pokolot club</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
