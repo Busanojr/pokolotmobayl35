@@ -1,21 +1,23 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar} from '@ionic/react';
 
-const Favorites: React.FC = () => {
+const Feed: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
               <IonMenuButton></IonMenuButton>
+              <IonTitle>Feed</IonTitle>
           </IonButtons>
-          <IonTitle>Holla soi dora</IonTitle>
+          
         </IonToolbar>
       </IonHeader>
 
-      <IonContent>
+      <IonContent className="ion-padding">
+          <h1>feed</h1>
       </IonContent>
     </IonPage>
   );
 };
 
-export default Favorites;
+export default Feed;
