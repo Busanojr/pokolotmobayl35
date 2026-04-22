@@ -1,29 +1,60 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import {
+  IonTabs,
+  IonTabButton,
+  IonIcon,
+  IonLabel,
+  IonRouterOutlet,
+  IonTabBar
+} from '@ionic/react';
+
+import { IonReactRouter } from '@ionic/react-router';
 import './Home.css';
-import Modal from '../components/Modal';
+
+import {
+  bookmarkOutline,
+  search,
+  starOutline
+} from 'ionicons/icons';
+
+import { Route, Redirect } from 'react-router';
+
+import Feed from "./tabs/Feed";
+import Search from "./tabs/Search";
+import Favorite from "./tabs/Favorite";
 
 const Home: React.FC = () => {
+  const tabs = [
+    { name: 'Feed', tab: 'feed', url: '/app/home/feed', icon: bookmarkOutline },
+    { name: 'Search', tab: 'search', url: '/app/home/search', icon: search },
+    { name: 'Favorites', tab: 'favorites', url: '/app/home/favorites', icon: starOutline },
+  ];
+
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>pokolot club</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name="Home page" />
-        <Modal />
-      </IonContent>
-    </IonPage>
+    <IonReactRouter>
+      <IonTabs>
+
+        {/* ROUTES */}
+        <IonRouterOutlet>
+          <Route exact path="/app/home/feed" component={Feed} />
+          <Route exact path="/app/home/search" component={Search} />
+          <Route exact path="/app/home/favorites" component={Favorite} />
+
+          {/* DEFAULT REDIRECT */}
+          <Redirect exact from="/app/home" to="/app/home/feed" />
+        </IonRouterOutlet>
+
+        {/* TAB BAR */}
+        <IonTabBar slot="bottom">
+          {tabs.map((item, index) => (
+            <IonTabButton key={index} tab={item.tab} href={item.url}>
+              <IonIcon icon={item.icon} />
+              <IonLabel>{item.name}</IonLabel>
+            </IonTabButton>
+          ))}
+        </IonTabBar>
+
+      </IonTabs>
+    </IonReactRouter>
   );
 };
 
