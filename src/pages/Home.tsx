@@ -19,8 +19,8 @@ import {
 import { Route, Redirect } from 'react-router';
 
 import Feed from "./tabs/Feed";
-import Search from "./tabs/Search";
-import Favorite from "./tabs/Favorite";
+import Search from "./tabs/search";
+import Favorite from "./tabs/favorite";
 
 const Home: React.FC = () => {
   const tabs = [
